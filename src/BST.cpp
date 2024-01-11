@@ -95,7 +95,7 @@ int main()
     cout << "Enter the key to be searched: ";
     cin >> searchKey;
     int flag = tree.search(searchKey);
-    if (flag = searchKey){
+    if (flag == searchKey){
         cout << "\n" << searchKey << " is found in the tree.\n";
     }
     else{
