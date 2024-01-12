@@ -30,19 +30,19 @@ struct List* input(struct List* head){
   struct List* dummy = createNode(); //first val is random
   struct List* current = dummy;
   
-while(1){
-  current->next = createNode();
-  current = current->next;
-  printf("Enter a number: ");
-  scanf("%d", &(current->val));
-  
-  printf("Continue? (Y/N) ");
-  scanf(" %c", &response);
-  
-  if(response == 'N' || response == 'n'){
-  break;
-  }
-} 
+  while(1){
+    current->next = createNode();
+    current = current->next;
+    printf("Enter a number: ");
+    scanf("%d", &(current->val));
+    
+    printf("Continue? (Y/N) ");
+    scanf(" %c", &response);
+    
+    if(response == 'N' || response == 'n'){
+    break;
+    }
+  } 
   struct List* result = dummy->next;
   return result;
 }
