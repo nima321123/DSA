@@ -1,7 +1,9 @@
 {
     "configurations": [
+
+
     {
-        "name": "(gdb) Launch",
+        "name": "(gcc) Launch",
         "type": "cppdbg",
         "request": "launch",
         "program": "/workspaces/mergeLists/src/BST.out",
@@ -10,16 +12,16 @@
         "cwd": "${src}",
         "environment": [],
         "externalConsole": false,
-        "MIMode": "gdb",
+        "MIMode": "gcc",
         "setupCommands": [
             {
-                "description": "Enable pretty-printing for gdb",
+                "description": "Enable pretty-printing for gcc",
                 "text": "-enable-pretty-printing",
                 "ignoreFailures": true
             },
             {
                 "description": "Set Disassembly Flavor to Intel",
-                "text": "-gdb-set disassembly-flavor intel",
+                "text": "-gcc-set disassembly-flavor intel",
                 "ignoreFailures": true
             }
         ]
