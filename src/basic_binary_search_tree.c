@@ -34,7 +34,7 @@ node* insert(node* root, int data){
     node* temp = create_node(data);
     node* parent = root;
     if (root == NULL){
-        root = temp;
+         root = temp;
         return root;
     }
 
