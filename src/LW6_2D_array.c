@@ -117,7 +117,7 @@ int * reduce_with_axis(int ** two_array, const char * func, int axis)
             for (int i = 0; i < 4; i++ ){
             printf("%d ", result0[i]);
             }
-            
+            return result0;
         }
     }
     
@@ -156,19 +156,31 @@ int * reduce_with_axis(int ** two_array, const char * func, int axis)
     }
     
     
-    
-    
 }
 
-/**
- * Write transpose function to transpose NxM array -> MxN array
+/*
+ * Write transpose function to transpose NxM array -> MxN array*/
+
 
 int ** transpose(int ** two_array, int N, int M)
 {
-    // allocate MxN array
 
+    // allocate MxN array
+    int ** transposed_array = malloc(M * sizeof(int *)); // allocate M x (int *)
+    for (int i = 0; i < M; i++)
+    {
+        transposed_array[i] = malloc(N * sizeof(int)); // allocate N x (int)
+    }
     // return the transposed array
-}*/
+    for (int i = 0; i < N; i++){
+        for (int j = 0; j < M; j++){
+            transposed_array[j][i] = two_array[i][j]; 
+        }
+        
+    }
+    
+    return transposed_array; 
+}
 
 int main()
 {
@@ -203,7 +215,30 @@ int main()
     scanf("%d", &axis);
     int * reduced_axis = reduce_with_axis(two_array, response, axis);
 
-    //int ** transposed_array = transpose(two_array, N, M);
+    int ** transposed_array = transpose(two_array, N, M);
+    printf("\nTransposed array: ");
+    for (int i = 0; i < M; i++){
+        printf("\n");
+        for (int j = 0; j < N; j++){
+            printf("%d ", transposed_array[i][j]);
+        }
+        
+    }
 
+    // Free dynamically allocated memory
+    for (int i = 0; i < N; i++)
+    {
+        free(two_array[i]);
+    }
+    free(two_array);
+    free(response);
+    free(reduced_axis);
+    for (int i = 0; i < M; i++)
+    {
+        free(transposed_array[i]);
+    }
+    free(transposed_array);
+
+    
     return 0;
 }
