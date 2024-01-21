@@ -1,5 +1,7 @@
 #include <stdlib.h>
 #include <time.h>
+#include <stdio.h>
+#include <string.h>
 
 /**
  * Write reduce function where func is one of "max", "min", "sum"
@@ -11,7 +13,7 @@ int reduce(int ** two_array, const char * func)
         int max_val = two_array[0][0];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 4; j++){
-                if (two_array[i][j] > temp) temp = two_array[i][j];
+                if (two_array[i][j] > max_val) max_val = two_array[i][j];
             }
         }
         return max_val;
@@ -21,13 +23,13 @@ int reduce(int ** two_array, const char * func)
         int min_val = two_array[0][0];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 4; j++){
-                if (two_array[i][j] < temp) temp = two_array[i][j];
+                if (two_array[i][j] < min_val) min_val = two_array[i][j];
             }
         }
         return min_val;
     }
     
-    if (strcmp(func, "sum") == 0)){
+    if (strcmp(func, "sum") == 0){
         int sum_val = two_array[0][0];
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 4; j++){
@@ -45,21 +47,120 @@ int reduce(int ** two_array, const char * func)
 */
 int * reduce_with_axis(int ** two_array, const char * func, int axis)
 {
-    // allocate 1d array
+    int* result0 = malloc(4 * sizeof(int));
+    int* result1 = malloc(3 * sizeof(int));
+    if (strcmp(func, "max") == 0){
+        if (axis == 1){ //row
+            int max = 0;
+            
+            for (int i = 0; i < 3; i++){ //row
+                max = two_array[i][0];
+                for (int j = 0; j < 4; j++){ //column
+                    if (two_array[i][j] > max)  max = two_array[i][j];
+                }
+                result1[i] = max;
+            }
+            for (int i = 0; i < 3; i++){
+            printf("%d ", result1[i]);}
+    
+            return result1;
 
-    // return the reduced array
+        }
+        else if (axis == 0){//column
+            int max = 0;
+            for (int i = 0; i < 3; i ++){
+                max = two_array[0][i];
+                for (int j = 0; j < 4; j++){
+                    if (two_array[j][i] > max) max = two_array[j][i];
+                }
+                result0[i] = max;
+            }
+            for (int i = 0; i < 4; i++ ){
+            printf("%d ", result0[i]);
+            }
+            return result0;
+            
+        }
+    }
+    else if (strcmp(func, "min") == 0){
+        if (axis == 1){ //row
+            int min = 0;
+            
+            for (int i = 0; i < 3; i++){ //row
+                min = two_array[i][0];
+                for (int j = 0; j < 4; j++){ //column
+                    if (two_array[i][j] < min)  min = two_array[i][j];
+                }
+                result1[i] = min;
+            }
+            for (int i = 0; i < 3; i++){
+            printf("%d ", result1[i]);}
+            return result1;
+        }
+        else if (axis == 0){//column
+            int min = 0;
+            for (int i = 0; i < 3; i ++){
+                min = two_array[0][i];
+                for (int j = 0; j < 4; j++){
+                    if (two_array[j][i] < min) min = two_array[j][i];
+                }
+                result0[i] = min;
+            }
+            for (int i = 0; i < 4; i++ ){
+            printf("%d ", result0[i]);
+            }
+            for (int i = 0; i < 4; i++){
+            printf("%d ", result1[i]);}
+            return result0;
+        }
+    }
+    
+    else if (strcmp(func, "sum") == 0){
+        if (axis == 1){ //row
+            int sum = 0;
+            
+            for (int i = 0; i < 3; i++){ //row
+                sum = 0;
+                for (int j = 0; j < 4; j++){ //column
+                sum += two_array[i][j];
+                }
+                result1[i] = sum;
+            }
+            for (int i = 0; i < 3; i++){
+            printf("%d ", result1[i]);}
+            return result1;
+            
+        }
+        else if (axis == 0){//column
+            int sum = 0;
+            for (int i = 0; i < 3; i ++){
+                sum = 0;
+                for (int j = 0; j < 4; j++){
+                sum += two_array[j][i];
+                }
+                result0[i] = sum;
+            }
+            for (int i = 0; i < 4; i++ ){
+            printf("%d ", result0[i]);
+            }
+            return result0;   
+        }
+    }
+    
+    
+    
+    
 }
-
 
 /**
  * Write transpose function to transpose NxM array -> MxN array
-*/
+
 int ** transpose(int ** two_array, int N, int M)
 {
     // allocate MxN array
 
     // return the transposed array
-}
+}*/
 
 int main()
 {
@@ -83,9 +184,9 @@ int main()
 
     int reduced = reduce(two_array, "max");
 
-    int * reduced_axis = reduce_with_axis(two_array, "max", 1);
+    int * reduced_axis = reduce_with_axis(two_array, "max", 0);
 
-    int ** transposed_array = transpose(two_array, N, M);
+    //int ** transposed_array = transpose(two_array, N, M);
 
     return 0;
 }
