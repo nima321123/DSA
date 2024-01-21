@@ -16,6 +16,7 @@ int reduce(int ** two_array, const char * func)
                 if (two_array[i][j] > max_val) max_val = two_array[i][j];
             }
         }
+        printf("\nMax = %d\n", max_val);
         return max_val;
     }
     
@@ -26,16 +27,18 @@ int reduce(int ** two_array, const char * func)
                 if (two_array[i][j] < min_val) min_val = two_array[i][j];
             }
         }
+        printf("\nMin = %d\n", min_val);
         return min_val;
     }
     
     if (strcmp(func, "sum") == 0){
-        int sum_val = two_array[0][0];
+        int sum_val = 0;
         for (int i = 0; i < 3; i++){
             for (int j = 0; j < 4; j++){
                 sum_val += two_array[i][j];
             }
         }
+        printf("\nSum = %d\n", sum_val);
         return sum_val;
     }
 }
@@ -68,12 +71,15 @@ int * reduce_with_axis(int ** two_array, const char * func, int axis)
         }
         else if (axis == 0){//column
             int max = 0;
-            for (int i = 0; i < 3; i ++){
-                max = two_array[0][i];
-                for (int j = 0; j < 4; j++){
-                    if (two_array[j][i] > max) max = two_array[j][i];
+            int index = 0;
+            for (int j = 0; j < 4; j ++){
+                
+                max = two_array[0][j];
+                for (int i = 0; i < 3; i++){
+                    if (two_array[i][j] > max) max = two_array[i][j];
                 }
-                result0[i] = max;
+                result0[index] = max;
+                index++;
             }
             for (int i = 0; i < 4; i++ ){
             printf("%d ", result0[i]);
@@ -98,20 +104,20 @@ int * reduce_with_axis(int ** two_array, const char * func, int axis)
             return result1;
         }
         else if (axis == 0){//column
-            int min = 0;
-            for (int i = 0; i < 3; i ++){
-                min = two_array[0][i];
-                for (int j = 0; j < 4; j++){
-                    if (two_array[j][i] < min) min = two_array[j][i];
+            int min;
+            int index = 0;
+            for (int j = 0; j < 4; j++){
+                min = two_array[0][j];
+                for (int i = 0; i < 3; i++){
+                    if (two_array[i][j] < min) min = two_array[i][j];
                 }
-                result0[i] = min;
+                result0[index] = min;
+                index++;
             }
             for (int i = 0; i < 4; i++ ){
             printf("%d ", result0[i]);
             }
-            for (int i = 0; i < 4; i++){
-            printf("%d ", result1[i]);}
-            return result0;
+            
         }
     }
     
@@ -132,13 +138,15 @@ int * reduce_with_axis(int ** two_array, const char * func, int axis)
             
         }
         else if (axis == 0){//column
-            int sum = 0;
-            for (int i = 0; i < 3; i ++){
+            int sum;
+            int index = 0;
+            for (int j = 0; j < 4; j ++){
                 sum = 0;
-                for (int j = 0; j < 4; j++){
-                sum += two_array[j][i];
+                for (int i = 0; i < 3; i++){
+                sum += two_array[i][j];
                 }
-                result0[i] = sum;
+                result0[index] = sum;
+                index++;
             }
             for (int i = 0; i < 4; i++ ){
             printf("%d ", result0[i]);
@@ -178,13 +186,22 @@ int main()
         for (int j = 0; j < M; j++)
         {
             two_array[i][j] = rand() % 10;
-            printf("array[%d][%d] = %d\n", i, j, two_array[i][j]);
+            printf("%d ", two_array[i][j]);
         }
+        printf("\n");
     }
+    char* response = malloc(3 * sizeof(char));
+    printf("Enter the function you want to use: ");
+    scanf("%s", response);
+    int reduced = reduce(two_array, response);
 
-    int reduced = reduce(two_array, "max");
-
-    int * reduced_axis = reduce_with_axis(two_array, "max", 0);
+    
+    printf("Enter the function you want to use: ");
+    scanf("%s", response);
+    int axis;
+    printf("Enter the axis you want to use: (0 for column, 1 for row)");
+    scanf("%d", &axis);
+    int * reduced_axis = reduce_with_axis(two_array, response, axis);
 
     //int ** transposed_array = transpose(two_array, N, M);
 
