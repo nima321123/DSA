@@ -2,8 +2,8 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: gdb build active file",
-            "command": "/usr/bin/g++", // Changed from gdb to g++
+            "label": "C/C++: gcc build active file",
+            "command": "/usr/bin/gcc",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
@@ -15,7 +15,7 @@
                 "cwd": "${fileDirname}"
             },
             "problemMatcher": [
-                "$gcc" // Changed from gdb to gcc
+                "$gcc"
             ],
             "group": {
                 "kind": "build",
