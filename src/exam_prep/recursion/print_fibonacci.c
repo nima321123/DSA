@@ -8,7 +8,7 @@ void print_fibo(int p2, int p1, int term, int i){
     printf("%d ", num);
 
     //recursive call
-    print_fibo(p1, num, term, i+1);
+    print_fibo(p1, num, term, i+1); //elegant
 }
 
 int main(){
