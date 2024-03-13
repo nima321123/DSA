@@ -19,7 +19,7 @@ void main()
       printf("\nEnter your choice: ");
       scanf("%d",&choice);
       switch(choice){
-	 case 1: printf("Enter the value to be insert: ");
+	 case 1: printf("Enter the value to insert: ");
 		 scanf("%d",&value);
 		 push(value);
 		 break;

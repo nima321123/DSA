@@ -35,8 +35,8 @@ int evaluate(char** s, int sSize){
     return result;
 }
 int main(){
-    char* s[] = {"3", "/", "2"};
-    int sSize = 3;
+    char* s[] = {"3", "/", "2", "*", "2"};
+    int sSize = 5;
     printf("%d", evaluate(s, sSize));
     return 0;
 }

@@ -1,0 +1,27 @@
+## Format
+- Written test
+- Duration 120 minutes
+- Closed book, one A4 reference sheet allowed.
+
+## Topics
+- Operators: ++, --, pre/post evaluation, order of privileges
+    - Section 2.12 Precedence and Order of Evaluation, the C programming language
+- Loop (for), branching (if, switch), continue, break
+- Array and pointers
+    - 1-d array, 2-d array
+    - malloc, free
+    - referencing, dereferencing
+- Tracing program with pointers
+    - https://www.youtube.com/watch?v=NIXI73TyqbY
+- Struct, pointer to struct
+- Char (int), string (array of char + '\0'), strlen, strcmp, strcat, sprintf
+- Linked list
+- Run program with arguments
+
+## Examples
+- https://www.cl.cam.ac.uk/teaching/exams/pastpapers/t-ProgramminginC.html
+- http://cau.ac.kr/~bongbong/c16/finalexam11.pdf
+- https://www.iii.u-tokyo.ac.jp/admissions/master-pastexams
+    - https://www.iii.u-tokyo.ac.jp/manage/wp-content/uploads/2016/04/2015S-A.pdf
+    - https://www.iii.u-tokyo.ac.jp/manage/wp-content/uploads/2017/04/2016bunseki.pdf
+    - https://www.iii.u-tokyo.ac.jp/manage/wp-content/uploads/2019/06/4703f8fdfe718327504cb6fba6c099b6.pdf

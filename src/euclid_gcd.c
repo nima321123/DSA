@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 int gcd_cal(int a, int b){
-	int quotient; 
+	
 	int rmd; 
 	int temp;
 	while (b != 0){
