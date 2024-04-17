@@ -3,9 +3,24 @@
     {
       "name": "linux-gcc-x64",
       "includePath": [
-        "${workspaceFolder}/**"
+        "${workspaceFolder}/**",
+        "/usr/bin"
       ],
-      "compilerPath": "/usr/bin/gcc",
+      "compilerPath": "/usr/bin/gcc", // Original compiler
+      "cStandard": "${default}",
+      "cppStandard": "${default}",
+      "intelliSenseMode": "linux-gcc-x64",
+      "compilerArgs": [
+        ""
+      ]
+    },
+    {
+      "name": "linux-g++-x64",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "/usr/bin"
+      ],
+      "compilerPath": "/usr/bin/g++", // Additional compiler
       "cStandard": "${default}",
       "cppStandard": "${default}",
       "intelliSenseMode": "linux-gcc-x64",
